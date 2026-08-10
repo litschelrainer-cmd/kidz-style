@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KIDZ STYLE – Dein Kind. Dein Style. Dein Shirt.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="shirt-icon">👕</div>
+      <div>
+        <div class="brand-title">KIDZ <span>STYLE</span></div>
+        <div class="brand-sub">DEIN KIND. DEIN STYLE. DEIN SHIRT.</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#how">So funktioniert's</a>
+      <a href="#preview">Beispiele</a>
+      <a href="#safety">Sicherheit</a>
+      <a href="#cart">Warenkorb <span class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <h1>DEIN KIND.<br>DEIN STYLE.<br><span>DEIN SHIRT!</span></h1>
+        <p>Lade ein Foto hoch, gib den Namen ein und entdecke dein Kind in einzigartigen T‑Shirt Designs.</p>
+        <div class="hero-badges">
+          <div>🛡️<span>Sicherer Foto-Upload</span></div>
+          <div>🧵<span>Hochwertiger Druck</span></div>
+          <div>🚚<span>Schneller Versand</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="avatar-wrap">
+          <div class="avatar-placeholder">DEIN<br>FOTO</div>
+          <div class="shirt-demo"><span id="heroName">Louis</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="steps">
+      <article class="step-card">
+        <div class="step-number">1</div>
+        <h3>FOTO HOCHLADEN</h3>
+        <p>Lade ein klares Foto deines Kindes hoch.</p>
+        <label class="upload-box">
+          <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <strong>☁ Foto auswählen</strong>
+          <small>JPG, PNG oder WEBP<br>max. 10 MB</small>
+        </label>
+        <img id="photoPreview" class="mini-preview hidden" alt="Vorschau deines Fotos">
+      </article>
+
+      <article class="step-card">
+        <div class="step-number">2</div>
+        <h3>NAMEN EINGEBEN</h3>
+        <p>Wie soll der Name auf dem Shirt stehen?</p>
+        <input id="nameInput" class="text-input" value="Louis" maxlength="18" />
+        <div class="tip">☆ Tipp: Achte auf die richtige Schreibweise.</div>
+      </article>
+
+      <article class="step-card">
+        <div class="step-number">3</div>
+        <h3>DESIGN-STIL WÄHLEN</h3>
+        <p>Wähle deinen Lieblings-Stil.</p>
+        <div class="styles">
+          <button class="style active" data-style="graffiti">🧴 Graffiti</button>
+          <button class="style" data-style="hawaii">🌴 Hawaii</button>
+          <button class="style" data-style="surf">🌊 Surf</button>
+          <button class="style" data-style="pop">💥 Pop Art</button>
+          <button class="style" data-style="premium">💎 Premium</button>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <div class="step-number">4</div>
+        <h3>VORSCHAU ERHALTEN</h3>
+        <p>Wir erstellen einzigartige Vorschauen für dich.</p>
+        <button id="generateBtn" class="cta">VORSCHAU ERSTELLEN</button>
+        <div class="timing">◷ Demo-Vorschau sofort. KI-Erstellung wird im nächsten Schritt angebunden.</div>
+      </article>
+    </section>
+
+    <section id="preview" class="preview-section">
+      <div class="section-head">
+        <h2>DEINE PERSONALISIERTEN VORSCHAUEN</h2>
+        <button id="shuffleBtn" class="ghost">↻ NEUE DESIGNS LADEN</button>
+      </div>
+
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section class="product-panel">
+      <div class="product-info">
+        <h2>DEINE AUSWAHL</h2>
+        <p>Wähle Farbe, Größe und Menge.</p>
+
+        <h4>SHIRT-FARBE</h4>
+        <div class="swatches">
+          <button class="swatch active" data-color="white" aria-label="Weiß"></button>
+          <button class="swatch black" data-color="black" aria-label="Schwarz"></button>
+          <button class="swatch navy" data-color="navy" aria-label="Navy"></button>
+          <button class="swatch gray" data-color="gray" aria-label="Grau"></button>
+          <button class="swatch sand" data-color="sand" aria-label="Sand"></button>
+        </div>
+
+        <h4>GRÖSSE</h4>
+        <div class="sizes">
+          <button>110/116</button><button>122/128</button><button class="active">134/146</button>
+          <button>152/164</button><button>S</button><button>M</button><button>L</button><button>XL</button>
+        </div>
+
+        <h4>MENGE</h4>
+        <div class="qty">
+          <button id="minus">−</button><span id="qty">1</span><button id="plus">+</button>
+        </div>
+
+        <div class="personalized-note">
+          <strong>Individuell angefertigt</strong>
+          <span>Dieses Produkt wird personalisiert für dich hergestellt.</span>
+        </div>
+
+        <button id="cartBtn" class="cta wide">IN DEN WARENKORB</button>
+      </div>
+    </section>
+
+    <section id="safety" class="trust">
+      <div><strong>🛡 SICHERHEIT</strong><span>Fotos nur zur Erstellung der Vorschau verwenden.</span></div>
+      <div><strong>✦ QUALITÄT</strong><span>Hochwertiger Druck auf Premium Baumwolle.</span></div>
+      <div><strong>🚚 SCHNELLER VERSAND</strong><span>Transparente Lieferzeit im Bestellprozess.</span></div>
+      <div><strong>✎ PERSONALISIERT</strong><span>Individuell nach deinem Namen gestaltet.</span></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© KIDZ STYLE</span>
+    <div>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+      <a href="#">Widerruf</a>
+      <a href="#">Kontakt</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
