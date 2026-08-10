@@ -1,156 +1,23 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>KIDZ STYLE – Dein Kind. Dein Style. Dein Shirt.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="shirt-icon">👕</div>
-      <div>
-        <div class="brand-title">KIDZ <span>STYLE</span></div>
-        <div class="brand-sub">DEIN KIND. DEIN STYLE. DEIN SHIRT.</div>
-      </div>
-    </div>
-    <nav>
-      <a href="#how">So funktioniert's</a>
-      <a href="#preview">Beispiele</a>
-      <a href="#safety">Sicherheit</a>
-      <a href="#cart">Warenkorb <span class="cart-count">0</span></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-copy">
-        <h1>DEIN KIND.<br>DEIN STYLE.<br><span>DEIN SHIRT!</span></h1>
-        <p>Lade ein Foto hoch, gib den Namen ein und entdecke dein Kind in einzigartigen T‑Shirt Designs.</p>
-        <div class="hero-badges">
-          <div>🛡️<span>Sicherer Foto-Upload</span></div>
-          <div>🧵<span>Hochwertiger Druck</span></div>
-          <div>🚚<span>Schneller Versand</span></div>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="avatar-wrap">
-          <div class="avatar-placeholder">DEIN<br>FOTO</div>
-          <div class="shirt-demo"><span id="heroName">Louis</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="how" class="steps">
-      <article class="step-card">
-        <div class="step-number">1</div>
-        <h3>FOTO HOCHLADEN</h3>
-        <p>Lade ein klares Foto deines Kindes hoch.</p>
-        <label class="upload-box">
-          <input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
-          <strong>☁ Foto auswählen</strong>
-          <small>JPG, PNG oder WEBP<br>max. 10 MB</small>
-        </label>
-        <img id="photoPreview" class="mini-preview hidden" alt="Vorschau deines Fotos">
-      </article>
-
-      <article class="step-card">
-        <div class="step-number">2</div>
-        <h3>NAMEN EINGEBEN</h3>
-        <p>Wie soll der Name auf dem Shirt stehen?</p>
-        <input id="nameInput" class="text-input" value="Louis" maxlength="18" />
-        <div class="tip">☆ Tipp: Achte auf die richtige Schreibweise.</div>
-      </article>
-
-      <article class="step-card">
-        <div class="step-number">3</div>
-        <h3>DESIGN-STIL WÄHLEN</h3>
-        <p>Wähle deinen Lieblings-Stil.</p>
-        <div class="styles">
-          <button class="style active" data-style="graffiti">🧴 Graffiti</button>
-          <button class="style" data-style="hawaii">🌴 Hawaii</button>
-          <button class="style" data-style="surf">🌊 Surf</button>
-          <button class="style" data-style="pop">💥 Pop Art</button>
-          <button class="style" data-style="premium">💎 Premium</button>
-        </div>
-      </article>
-
-      <article class="step-card">
-        <div class="step-number">4</div>
-        <h3>VORSCHAU ERHALTEN</h3>
-        <p>Wir erstellen einzigartige Vorschauen für dich.</p>
-        <button id="generateBtn" class="cta">VORSCHAU ERSTELLEN</button>
-        <div class="timing">◷ Demo-Vorschau sofort. KI-Erstellung wird im nächsten Schritt angebunden.</div>
-      </article>
-    </section>
-
-    <section id="preview" class="preview-section">
-      <div class="section-head">
-        <h2>DEINE PERSONALISIERTEN VORSCHAUEN</h2>
-        <button id="shuffleBtn" class="ghost">↻ NEUE DESIGNS LADEN</button>
-      </div>
-
-      <div id="cards" class="cards"></div>
-    </section>
-
-    <section class="product-panel">
-      <div class="product-info">
-        <h2>DEINE AUSWAHL</h2>
-        <p>Wähle Farbe, Größe und Menge.</p>
-
-        <h4>SHIRT-FARBE</h4>
-        <div class="swatches">
-          <button class="swatch active" data-color="white" aria-label="Weiß"></button>
-          <button class="swatch black" data-color="black" aria-label="Schwarz"></button>
-          <button class="swatch navy" data-color="navy" aria-label="Navy"></button>
-          <button class="swatch gray" data-color="gray" aria-label="Grau"></button>
-          <button class="swatch sand" data-color="sand" aria-label="Sand"></button>
-        </div>
-
-        <h4>GRÖSSE</h4>
-        <div class="sizes">
-          <button>110/116</button><button>122/128</button><button class="active">134/146</button>
-          <button>152/164</button><button>S</button><button>M</button><button>L</button><button>XL</button>
-        </div>
-
-        <h4>MENGE</h4>
-        <div class="qty">
-          <button id="minus">−</button><span id="qty">1</span><button id="plus">+</button>
-        </div>
-
-        <div class="personalized-note">
-          <strong>Individuell angefertigt</strong>
-          <span>Dieses Produkt wird personalisiert für dich hergestellt.</span>
-        </div>
-
-        <button id="cartBtn" class="cta wide">IN DEN WARENKORB</button>
-      </div>
-    </section>
-
-    <section id="safety" class="trust">
-      <div><strong>🛡 SICHERHEIT</strong><span>Fotos nur zur Erstellung der Vorschau verwenden.</span></div>
-      <div><strong>✦ QUALITÄT</strong><span>Hochwertiger Druck auf Premium Baumwolle.</span></div>
-      <div><strong>🚚 SCHNELLER VERSAND</strong><span>Transparente Lieferzeit im Bestellprozess.</span></div>
-      <div><strong>✎ PERSONALISIERT</strong><span>Individuell nach deinem Namen gestaltet.</span></div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© KIDZ STYLE</span>
-    <div>
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-      <a href="#">AGB</a>
-      <a href="#">Widerruf</a>
-      <a href="#">Kontakt</a>
-    </div>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KIDZ STYLE – Dein Kind. Dein Style. Dein Shirt.</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7fafb;color:#071923}.top{background:#061b26;color:white;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5}.brand{font-weight:900;font-size:24px;letter-spacing:-1px}.brand b{color:#20c7cf}.top a{color:#fff;text-decoration:none;margin-left:18px;font-size:13px}.hero{min-height:620px;padding:70px 7%;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;background:linear-gradient(120deg,#eefcff,#fff1d7)}.hero h1{font-size:clamp(48px,7vw,92px);line-height:.87;margin:0;letter-spacing:-5px}.hero h1 em{font-style:normal;color:#19b9c4}.hero p{font-size:18px;max-width:590px;line-height:1.55}.hero img{width:100%;border-radius:28px;box-shadow:0 25px 60px #0002}.badges{display:flex;gap:10px;flex-wrap:wrap}.badges span{background:#fff;border:1px solid #d9e5e8;border-radius:30px;padding:10px 14px;font-size:13px}.wrap{max-width:1240px;margin:auto;padding:65px 22px}.eyebrow{color:#13aeb8;font-weight:900;letter-spacing:2px;font-size:13px}.title{font-size:clamp(34px,5vw,60px);margin:8px 0 12px;letter-spacing:-2px}.lead{color:#52636b;max-width:720px;line-height:1.6}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0}.filter{border:1px solid #ccdadd;background:#fff;border-radius:24px;padding:11px 16px;font-weight:700;cursor:pointer}.filter.active{background:#071923;color:#fff}.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.card{background:#fff;border-radius:22px;overflow:hidden;border:1px solid #dfe9eb;box-shadow:0 10px 30px #00151f0b}.card img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}.card div{padding:16px 18px}.card h3{margin:0 0 5px}.card p{margin:0;color:#65747b;font-size:14px}.maker{background:#071923;color:white}.maker .lead{color:#bdd0d6}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.step{background:#102b37;padding:22px;border-radius:18px}.step strong{color:#28d0d6}.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.field{background:white;color:#071923;border-radius:16px;padding:18px}.field input,.field select{width:100%;padding:14px;border:1px solid #ccdadd;border-radius:10px;font-size:16px;margin-top:8px}.cta{display:inline-block;background:#21c5cd;color:#03161f;border:0;border-radius:12px;padding:16px 22px;font-weight:900;font-size:16px;margin-top:14px}.note{font-size:12px;color:#a9c0c8;margin-top:10px}.catalog{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:25px}.tile{min-height:110px;border-radius:14px;padding:15px;display:flex;align-items:flex-end;font-weight:900;background:linear-gradient(135deg,#dffcff,#ffe3b2);border:1px solid #d8e7e9}.tile:nth-child(3n){background:linear-gradient(135deg,#ffe44d,#ffb5d6)}.tile:nth-child(4n){background:linear-gradient(135deg,#d9ffba,#b9e9ff)}footer{padding:30px 5%;background:#03141d;color:#a9bdc5;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}@media(max-width:800px){.top nav{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:48px 22px}.hero h1{letter-spacing:-3px}.gallery{grid-template-columns:1fr}.steps,.form{grid-template-columns:1fr}.catalog{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header class="top"><div class="brand">KIDZ <b>STYLE</b></div><nav><a href="#beispiele">Beispiele</a><a href="#creator">Dein Shirt</a><a href="#styles">50 Styles</a></nav></header>
+<section class="hero"><div><div class="eyebrow">PERSONALISIERTE KINDER-SHIRTS</div><h1>DEIN KIND.<br>DEIN STYLE.<br><em>DEIN SHIRT!</em></h1><p>Foto hochladen, Namen eingeben, Stil auswählen – und sehen, wie dein personalisiertes Shirt wirken kann.</p><div class="badges"><span>✓ Foto-Upload</span><span>✓ 50 Design-Ideen</span><span>✓ Persönlicher Name</span></div></div><img src="assets/beach-louis.png" alt="KIDZ STYLE Beach Beispiel"></section>
+<section class="wrap" id="beispiele"><div class="eyebrow">ECHTE DESIGN-BEISPIELE</div><h2 class="title">So kann dein Shirt aussehen.</h2><p class="lead">Jetzt sind die Beispielbilder direkt in der Webseite eingebaut. Tippe auf einen Stil, um die Galerie zu filtern.</p><div class="filters"><button class="filter active" data-f="all">Alle</button><button class="filter" data-f="graffiti">Graffiti</button><button class="filter" data-f="hawaii">Hawaii / Beach</button><button class="filter" data-f="pop">Pop Art</button><button class="filter" data-f="comic">Comic</button><button class="filter" data-f="premium">Premium Logo</button></div><div class="gallery">
+<article class="card" data-cat="hawaii"><img src="assets/beach-varianten.png"><div><h3>Beach & Hawaii</h3><p>Palmen, Sonne, Sonnenbrille und personalisiertes Logo.</p></div></article>
+<article class="card" data-cat="graffiti"><img src="assets/graffiti.png"><div><h3>Graffiti Collection</h3><p>Spray, Drip, Crown, Brush und Street Styles.</p></div></article>
+<article class="card" data-cat="pop"><img src="assets/pop-art.png"><div><h3>Pop Art</h3><p>Comic Explosion, Boom, Retro und kräftige Pop-Grafiken.</p></div></article>
+<article class="card" data-cat="premium"><img src="assets/premium.png"><div><h3>Premium Logo</h3><p>Reduzierter, edler und markenähnlicher Look.</p></div></article>
+<article class="card" data-cat="comic"><img src="assets/comic.png"><div><h3>Comic & Character</h3><p>Illustrative Motive mit starkem Wiedererkennungswert.</p></div></article>
+<article class="card" data-cat="graffiti"><img src="assets/logo-59-46.png"><div><h3>Logo 59 & 46</h3><p>Zwei der auffälligen Logo-Richtungen als große Shirt-Vorschau.</p></div></article>
+</div></section>
+<section class="maker" id="creator"><div class="wrap"><div class="eyebrow">DEIN EIGENES DESIGN</div><h2 class="title">In drei Schritten.</h2><p class="lead">Der Upload funktioniert bereits als lokale Vorschau. Die automatische KI-Erzeugung der 50 Bilder schließen wir im nächsten Entwicklungsschritt an.</p><div class="steps"><div class="step"><strong>01</strong><h3>Foto hochladen</h3><p>Ein klares Foto des Kindes auswählen.</p></div><div class="step"><strong>02</strong><h3>Namen eingeben</h3><p>Der Name wird Teil des Designs.</p></div><div class="step"><strong>03</strong><h3>Stil wählen</h3><p>Graffiti, Hawaii, Pop Art, Comic oder Premium.</p></div></div><div class="form"><div class="field"><b>Foto des Kindes</b><input id="photo" type="file" accept="image/*"><img id="prev" style="display:none;width:100%;margin-top:12px;border-radius:12px;max-height:320px;object-fit:cover"></div><div class="field"><b>Name auf dem Shirt</b><input id="name" value="Louis" maxlength="18"><select id="style"><option>Graffiti</option><option>Hawaii / Beach</option><option>Pop Art</option><option>Comic</option><option>Premium Logo</option></select><button class="cta" id="demo">VORSCHAU VORBEREITEN</button><div id="msg" class="note">Demo: Noch keine kostenpflichtige KI-Erzeugung.</div></div></div></div></section>
+<section class="wrap" id="styles"><div class="eyebrow">DESIGN-KATALOG</div><h2 class="title">50 Varianten als Ziel.</h2><p class="lead">Je 10 Designs in fünf Stilwelten. So bekommt jeder Kunde Auswahl, ohne von hunderten Motiven erschlagen zu werden.</p><div class="catalog" id="catalog"></div></section>
+<footer><b>KIDZ STYLE</b><span>Personalisierte Produkte · Hinweise zu Widerruf/AGB werden vor Verkaufsstart rechtssicher eingebunden.</span></footer>
+<script>
+const labels=['Graffiti Tag','Spray & Drip','Crown Logo','Brush Style','3D Graffiti','Smiley Tag','X Mark','Initial Circle','Boxed Tag','Bubble Style','Tropical Badge','Palm Sunset','Surf Club','Aloha Brush','Island Crest','Beach Wave','Hibiscus Logo','Sunset Script','Ocean Stamp','Tiki Style','Comic Explosion','Boom Style','Portrait Pop','Pop Bubble','Retro Box','Starburst','Thought Bubble','Bold Pop','City Pop','Color Blast','Hero Comic','Character Badge','Sketch Face','Action Logo','Sticker Style','Manga Pop','Cartoon Crest','Ink Hero','Comic Name','Panel Style','Monogram','Luxury Crest','Minimal Script','Gold Badge','Varsity Mark','Signature','Shield Logo','Classic Initial','Premium Stamp','Clean Wordmark'];
+const cat=document.getElementById('catalog'); labels.forEach((x,i)=>{let d=document.createElement('div');d.className='tile';d.textContent=(i+1)+'. '+x;cat.appendChild(d)});
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.card').forEach(c=>c.style.display=(b.dataset.f==='all'||c.dataset.cat===b.dataset.f)?'block':'none')});
+document.getElementById('photo').onchange=e=>{let f=e.target.files[0];if(!f)return;let p=document.getElementById('prev');p.src=URL.createObjectURL(f);p.style.display='block'};
+document.getElementById('demo').onclick=()=>{let n=document.getElementById('name').value||'Dein Name',s=document.getElementById('style').value;document.getElementById('msg').textContent='Bereit: '+n+' · '+s+'. Im nächsten Schritt verbinden wir hier die automatische KI-Bilderzeugung.'};
+</script></body></html>
