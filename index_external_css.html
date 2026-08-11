@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KIDZ STYLE</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">KIDZ <span>STYLE</span></div>
+  <nav class="nav">
+    <a href="#beispiele">Beispiele</a>
+    <a href="#creator">Eigenes Shirt</a>
+    <a href="#sicherheit">Sicherheit</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <h1>DEIN KIND.<br>DEIN STYLE.<br><span>DEIN SHIRT!</span></h1>
+    <p>Lade ein Foto hoch, gib den Namen ein und entdecke dein Kind in personalisierten T‑Shirt-Designs – von Graffiti über Hawaii bis Pop Art.</p>
+    <div class="hero-actions">
+      <a class="primary" href="#creator">Jetzt ausprobieren</a>
+      <a class="secondary" href="#beispiele">Beispiele ansehen</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="beispiele">
+  <div class="section-head">
+    <div>
+      <h2>So könnte dein Shirt aussehen</h2>
+      <p>Hier siehst du echte Beispielbilder aus unseren bisherigen Entwürfen. Mit den Filtern kannst du schnell zwischen den Stilrichtungen wechseln.</p>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">Alle</button>
+    <button class="filter" data-filter="graffiti">Graffiti</button>
+    <button class="filter" data-filter="hawaii">Hawaii / Beach</button>
+    <button class="filter" data-filter="pop">Pop Art</button>
+    <button class="filter" data-filter="comic">Comic</button>
+    <button class="filter" data-filter="premium">Premium Logo</button>
+  </div>
+
+  <div class="gallery">
+    <article class="card" data-cat="hawaii">
+      <img src="beach-louis.png" alt="Beach und Hawaii Beispiel" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">HAWAII / BEACH</span>
+        <h3>Beach & Palmen</h3>
+        <p>Warme Sunset-Stimmung mit Palmen und personalisiertem Shirt.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="hawaii">
+      <img src="beach-varianten.png" alt="Beach Varianten" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">HAWAII / BEACH</span>
+        <h3>Beach Varianten</h3>
+        <p>Mehrere Beach-Looks mit verschiedenen Logos und Sonnenbrillen.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="graffiti">
+      <img src="graffiti.png" alt="Graffiti Beispiel" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">GRAFFITI</span>
+        <h3>Street & Graffiti</h3>
+        <p>Kräftige Farben, Drips, Spray-Look und urbaner Style.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="pop">
+      <img src="pop-art.png" alt="Pop Art Beispiel" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">POP ART</span>
+        <h3>Pop Art</h3>
+        <p>Comic-Farben, Halftone-Look und auffällige Typografie.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="comic">
+      <img src="comic.png" alt="Comic Beispiel" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">COMIC</span>
+        <h3>Comic Style</h3>
+        <p>Verspielte Illustrationen und starke Comic-Elemente.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="premium">
+      <img src="premium.png" alt="Premium Logo Beispiel" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">PREMIUM</span>
+        <h3>Premium Logo</h3>
+        <p>Cleaner, edler Look mit Monogramm-, Wappen- und Gold-Optik.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="graffiti">
+      <img src="logo-59-46.png" alt="Logo Varianten 59 und 46" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">LOGO-VARIANTEN</span>
+        <h3>Design 59 & 46</h3>
+        <p>Hawaii Vintage trifft auf grünen Graffiti-Look.</p>
+      </div>
+    </article>
+
+    <article class="card" data-cat="all">
+      <img src="mix.png" alt="Mix aus verschiedenen Designs" onerror="this.style.display='none'">
+      <div class="card-body">
+        <span class="badge">MIX</span>
+        <h3>Viele Styles</h3>
+        <p>Ein Überblick über verschiedene Logo- und T‑Shirt-Richtungen.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="creator" id="creator">
+  <div class="creator-grid">
+    <div class="panel">
+      <h2>Dein eigenes Shirt</h2>
+      <p>Dieser Bereich ist die Grundlage für die spätere KI-Automatisierung.</p>
+
+      <div class="field">
+        <label>1. Foto hochladen</label>
+        <label class="upload">
+          Foto auswählen
+          <small>JPG, PNG oder WEBP</small>
+          <input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+        </label>
+        <img id="photoPreview" alt="Vorschau des hochgeladenen Fotos">
+      </div>
+
+      <div class="field">
+        <label for="nameInput">2. Name auf dem Shirt</label>
+        <input id="nameInput" type="text" value="Louis" maxlength="18" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label>3. Stil auswählen</label>
+        <div class="style-grid">
+          <button class="style-btn active" data-style="Graffiti">Graffiti</button>
+          <button class="style-btn" data-style="Hawaii / Beach">Hawaii / Beach</button>
+          <button class="style-btn" data-style="Pop Art">Pop Art</button>
+          <button class="style-btn" data-style="Premium Logo">Premium Logo</button>
+        </div>
+      </div>
+
+      <button class="primary" id="demoButton" type="button">Demo-Vorschau aktualisieren</button>
+
+      <div class="note">
+        Die echte KI-Erzeugung wird im nächsten Schritt serverseitig angebunden. Der API-Schlüssel gehört niemals direkt in diese HTML-Datei.
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Vorschau</h2>
+      <div class="preview-box" id="previewBox">
+        <div class="preview-label">
+          <span id="selectedStyle">Graffiti</span>
+          <strong id="previewName">Louis</strong>
+        </div>
+      </div>
+      <div class="note">
+        Dein personalisiertes Produkt wird individuell angefertigt. Details zu Widerruf, AGB und Datenschutz gehören in die entsprechenden Rechtstexte.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="sicherheit">
+  <div>
+    <strong>Sicherer Foto-Upload</strong>
+    <span>Für die echte Version werden Uploads serverseitig und mit klaren Löschfristen verarbeitet.</span>
+  </div>
+  <div>
+    <strong>Individuell angefertigt</strong>
+    <span>Name, Motiv und Stil werden für jede Bestellung personalisiert.</span>
+  </div>
+  <div>
+    <strong>Hochwertiger Druck</strong>
+    <span>Die finale Produktionsqualität wird später mit dem Druckpartner abgestimmt.</span>
+  </div>
+  <div>
+    <strong>50 Design-Vorlagen</strong>
+    <span>Graffiti, Hawaii, Surf, Pop Art, Comic und Premium können als feste Kataloge aufgebaut werden.</span>
+  </div>
+</section>
+
+<footer>
+  <strong>KIDZ STYLE</strong>
+  <nav>
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">AGB</a>
+    <a href="#">Widerruf</a>
+    <a href="#">Kontakt</a>
+  </nav>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var filters = document.querySelectorAll(".filter");
+  var cards = document.querySelectorAll(".card");
+
+  filters.forEach(function (button) {
+    button.addEventListener("click", function () {
+      filters.forEach(function (b) {
+        b.classList.remove("active");
+      });
+      button.classList.add("active");
+
+      var wanted = button.getAttribute("data-filter");
+
+      cards.forEach(function (card) {
+        var category = card.getAttribute("data-cat");
+        var show = wanted === "all" || category === wanted || category === "all";
+        card.classList.toggle("hidden", !show);
+      });
+    });
+  });
+
+  var photoInput = document.getElementById("photoInput");
+  var photoPreview = document.getElementById("photoPreview");
+
+  photoInput.addEventListener("change", function (event) {
+    var file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    var objectUrl = URL.createObjectURL(file);
+    photoPreview.src = objectUrl;
+    photoPreview.style.display = "block";
+  });
+
+  var styleButtons = document.querySelectorAll(".style-btn");
+  var selectedStyle = document.getElementById("selectedStyle");
+  var currentStyle = "Graffiti";
+
+  styleButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      styleButtons.forEach(function (b) {
+        b.classList.remove("active");
+      });
+      button.classList.add("active");
+      currentStyle = button.getAttribute("data-style");
+      selectedStyle.textContent = currentStyle;
+    });
+  });
+
+  var nameInput = document.getElementById("nameInput");
+  var previewName = document.getElementById("previewName");
+  var demoButton = document.getElementById("demoButton");
+
+  function updatePreview() {
+    var value = nameInput.value.trim();
+    previewName.textContent = value || "DEIN NAME";
+    selectedStyle.textContent = currentStyle;
+  }
+
+  nameInput.addEventListener("input", updatePreview);
+  demoButton.addEventListener("click", updatePreview);
+
+  updatePreview();
+})();
+</script>
+
+</body>
+</html>
