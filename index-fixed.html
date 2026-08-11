@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KIDZ STYLE – Kategorien</title>
+<style>
+:root{--bg:#f6f7f8;--ink:#06131b;--teal:#13b8c4;--line:#dbe3e6;--muted:#62737b}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg)}
+header{position:sticky;top:0;z-index:20;background:#071820;color:white;padding:16px 5vw;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:28px;font-weight:900;letter-spacing:-1px} .brand span{color:var(--teal)}
+header small{color:#c6d3d7}
+.hero{padding:56px 5vw 28px;background:linear-gradient(135deg,#fff,#ecf8f9)}
+.hero h1{font-size:clamp(42px,7vw,84px);line-height:.92;margin:0 0 18px;letter-spacing:-4px}
+.hero h1 span{color:var(--teal)} .hero p{max-width:760px;font-size:19px;line-height:1.5;color:#344750}
+.wrap{padding:24px 5vw 64px}
+.section-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}
+.section-title h2{font-size:32px;margin:0} .section-title p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.category-card{border:1px solid var(--line);background:white;border-radius:22px;padding:0;text-align:left;overflow:hidden;cursor:pointer;box-shadow:0 12px 30px rgba(3,22,31,.08)}
+.image-wrap{aspect-ratio:4/3;overflow:hidden;background:#e9eff1} .image-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:.25s}
+.category-card:hover img{transform:scale(1.02)}
+.category-meta{display:flex;gap:14px;align-items:center;padding:15px 16px 18px}
+.number{font-size:13px;font-weight:900;color:white;background:var(--teal);border-radius:999px;padding:8px 9px}
+.category-meta h3{margin:0 0 5px;font-size:19px} .category-meta p{margin:0;color:var(--muted);font-size:13px}
+.note{margin-top:26px;background:#eef8f9;border:1px solid #ccebed;padding:16px 18px;border-radius:16px;color:#3d5961;font-size:14px;line-height:1.5}
+.modal{position:fixed;inset:0;background:rgba(2,10,15,.88);z-index:50;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.open{display:flex} .modal-card{background:#fff;max-width:1200px;width:100%;max-height:94vh;border-radius:20px;overflow:auto;position:relative}
+.modal-head{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:14px 18px;background:#071820;color:white;z-index:3}
+.modal-head h2{font-size:20px;margin:0} .close{border:0;background:#fff;color:#071820;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer}
+.modal-body{padding:16px} .modal-body img{width:100%;height:auto;display:block;border-radius:14px}
+.modal-tip{padding:0 16px 18px;color:#5a6a71;font-size:14px}
+footer{padding:26px 5vw;background:#071820;color:white;font-size:13px}
+@media(max-width:950px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){header small{display:none} .hero{padding:38px 18px 20px} .hero h1{letter-spacing:-2px} .wrap{padding:20px 18px 48px} .grid{grid-template-columns:1fr} .section-title{display:block} .section-title p{margin-top:7px}}
+</style>
+</head>
+<body>
+<header><div class="brand">KIDZ <span>STYLE</span></div><small>9 frische Hauptkategorien</small></header>
+
+<section class="hero">
+  <h1>WÄHLE DEINEN<br><span>STYLE.</span></h1>
+  <p>Jede Kategorie zeigt zunächst eine große Vorschau. Tippe auf die Kategorie und du siehst die komplette Serie mit allen neun Models und den unterschiedlichen personalisierten T‑Shirt-Motiven.</p>
+</section>
+
+<main class="wrap">
+  <div class="section-title">
+    <div><h2>Unsere Kategorien</h2><p>Nur die zuletzt bestätigten Entwürfe.</p></div>
+  </div>
+  <div class="grid">
+    
+      <button class="category-card" data-title="Monogramm / Minimalistisch" data-image="01-monogramm.png">
+        <div class="image-wrap"><img src="01-monogramm.png" alt="Monogramm / Minimalistisch"></div>
+        <div class="category-meta">
+          <span class="number">01</span>
+          <div><h3>Monogramm / Minimalistisch</h3><p>Vorschau mit Louis · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Graffiti & Urban" data-image="02-graffiti.png">
+        <div class="image-wrap"><img src="02-graffiti.png" alt="Graffiti & Urban"></div>
+        <div class="category-meta">
+          <span class="number">02</span>
+          <div><h3>Graffiti & Urban</h3><p>Vorschau mit Jayden · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Futuristisch & Neon" data-image="03-futuristisch.png">
+        <div class="image-wrap"><img src="03-futuristisch.png" alt="Futuristisch & Neon"></div>
+        <div class="category-meta">
+          <span class="number">03</span>
+          <div><h3>Futuristisch & Neon</h3><p>Vorschau mit Noah · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Street & Casual" data-image="04-street.png">
+        <div class="image-wrap"><img src="04-street.png" alt="Street & Casual"></div>
+        <div class="category-meta">
+          <span class="number">04</span>
+          <div><h3>Street & Casual</h3><p>Vorschau mit Lina · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Vintage & Timeless" data-image="05-vintage.png">
+        <div class="image-wrap"><img src="05-vintage.png" alt="Vintage & Timeless"></div>
+        <div class="category-meta">
+          <span class="number">05</span>
+          <div><h3>Vintage & Timeless</h3><p>Vorschau mit Mila · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Beach & Tropical" data-image="06-beach.png">
+        <div class="image-wrap"><img src="06-beach.png" alt="Beach & Tropical"></div>
+        <div class="category-meta">
+          <span class="number">06</span>
+          <div><h3>Beach & Tropical</h3><p>Vorschau mit Leo · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Urban & Graffiti" data-image="07-urban.png">
+        <div class="image-wrap"><img src="07-urban.png" alt="Urban & Graffiti"></div>
+        <div class="category-meta">
+          <span class="number">07</span>
+          <div><h3>Urban & Graffiti</h3><p>Vorschau mit Tyler · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Luxury & Premium" data-image="08-luxury.png">
+        <div class="image-wrap"><img src="08-luxury.png" alt="Luxury & Premium"></div>
+        <div class="category-meta">
+          <span class="number">08</span>
+          <div><h3>Luxury & Premium</h3><p>Vorschau mit Yassin · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+      <button class="category-card" data-title="Wild & Animal" data-image="09-animal.png">
+        <div class="image-wrap"><img src="09-animal.png" alt="Wild & Animal"></div>
+        <div class="category-meta">
+          <span class="number">09</span>
+          <div><h3>Wild & Animal</h3><p>Vorschau mit Ami · öffnen für alle 9 Models</p></div>
+        </div>
+      </button>
+    
+  </div>
+  <div class="note"><strong>Nächster Schritt:</strong> Aus den 3×3-Kategoriepostern können wir anschließend für die Webseite noch echte Einzelkarten pro Model ausschneiden, sodass beim Öffnen nicht nur das Gesamtbild, sondern neun einzeln anwählbare Models erscheinen.</div>
+</main>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head"><h2 id="modalTitle"></h2><button class="close" id="closeBtn">×</button></div>
+    <div class="modal-body"><img id="modalImage" alt=""></div>
+    <div class="modal-tip">Hier siehst du die komplette Kategorie mit allen neun Models.</div>
+  </div>
+</div>
+
+<footer>© KIDZ STYLE · Personalisierte T‑Shirts</footer>
+
+<script>
+const modal=document.getElementById('modal');
+const title=document.getElementById('modalTitle');
+const image=document.getElementById('modalImage');
+document.querySelectorAll('.category-card').forEach(card=>{
+ card.addEventListener('click',()=>{
+   title.textContent=card.dataset.title;
+   image.src=card.dataset.image;
+   image.alt=card.dataset.title;
+   modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+ });
+});
+function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');}
+document.getElementById('closeBtn').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal) closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+</script>
+</body>
+</html>
