@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KIDZ STYLE</title>
+<style>
+:root{--ink:#061720;--teal:#14b9c5;--bg:#f4f7f8;--line:#d9e5e8;--muted:#65767d}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;z-index:30;background:#061720;color:#fff;padding:16px 5vw}
+.brand{font-size:28px;font-weight:900} .brand span{color:var(--teal)}
+.hero{padding:36px 5vw 20px;background:linear-gradient(135deg,#fff,#eaf8f9)}
+.hero h1{margin:0 0 12px;font-size:clamp(40px,7vw,76px);line-height:.95;letter-spacing:-3px}
+.hero h1 span{color:var(--teal)} .hero p{max-width:760px;line-height:1.5;color:#41565e}
+main{padding:24px 5vw 56px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.category-card{border:1px solid var(--line);background:#fff;border-radius:20px;overflow:hidden;padding:0;text-align:left;box-shadow:0 10px 28px #06172012}
+.category-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.cat-meta{display:flex;gap:12px;align-items:center;padding:14px}
+.cat-meta>span{background:var(--teal);color:#fff;border-radius:999px;padding:8px;font-weight:800;font-size:12px}
+.cat-meta strong{display:block;font-size:17px} .cat-meta small{display:block;color:var(--muted);margin-top:4px}
+.modal{position:fixed;inset:0;background:#031017e8;z-index:60;display:none;overflow:auto;padding:14px}
+.modal.open{display:block}
+.modal-shell{max-width:1080px;margin:auto;background:#fff;border-radius:22px;overflow:hidden}
+.modal-head{position:sticky;top:0;z-index:5;background:#061720;color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.modal-head h2{margin:0;font-size:20px} .close{width:38px;height:38px;border:0;border-radius:50%;background:#fff;font-size:22px}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:14px}
+.model-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;padding:0;text-align:left}
+.model-card.selected{outline:4px solid var(--teal)}
+.crop{width:100%;aspect-ratio:1.35/1;overflow:hidden;background:#e8eef0}
+.crop-inner{width:100%;height:100%;background-repeat:no-repeat}
+.model-label{padding:10px 12px 12px;display:flex;justify-content:space-between;align-items:center}
+.model-label strong{font-size:17px}
+.initial{background:#061720;color:#fff;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900}
+.choice{display:none;margin:0 14px 16px;padding:14px;background:#edf8f9;border-radius:14px}
+.choice.show{display:block}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){
+  header{padding:14px 18px} .hero{padding:30px 18px 18px} main{padding:18px 18px 44px}
+  .grid{grid-template-columns:1fr} .model-grid{grid-template-columns:1fr 1fr;padding:10px;gap:9px}
+  .model-label strong{font-size:15px}
+}
+</style>
+</head>
+<body>
+<header><div class="brand">KIDZ <span>STYLE</span></div></header>
+<section class="hero">
+  <h1>WÄHLE DEINEN<br><span>STYLE.</span></h1>
+  <p>Tippe auf eine Kategorie. Danach werden die neun Models sauber einzeln angezeigt.</p>
+</section>
+<main><div class="grid">
+    <button class="category-card" data-title="Monogramm / Minimalistisch" data-image="01-monogramm.png">
+      <img src="01-monogramm.png" alt="Monogramm / Minimalistisch">
+      <div class="cat-meta">
+        <span>01</span>
+        <div><strong>Monogramm / Minimalistisch</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Graffiti & Urban" data-image="02-graffiti.png">
+      <img src="02-graffiti.png" alt="Graffiti & Urban">
+      <div class="cat-meta">
+        <span>02</span>
+        <div><strong>Graffiti & Urban</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Futuristisch & Neon" data-image="03-futuristisch.png">
+      <img src="03-futuristisch.png" alt="Futuristisch & Neon">
+      <div class="cat-meta">
+        <span>03</span>
+        <div><strong>Futuristisch & Neon</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Street & Casual" data-image="04-street.png">
+      <img src="04-street.png" alt="Street & Casual">
+      <div class="cat-meta">
+        <span>04</span>
+        <div><strong>Street & Casual</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Vintage & Timeless" data-image="05-vintage.png">
+      <img src="05-vintage.png" alt="Vintage & Timeless">
+      <div class="cat-meta">
+        <span>05</span>
+        <div><strong>Vintage & Timeless</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Beach & Tropical" data-image="06-beach.png">
+      <img src="06-beach.png" alt="Beach & Tropical">
+      <div class="cat-meta">
+        <span>06</span>
+        <div><strong>Beach & Tropical</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Urban & Graffiti" data-image="07-urban.png">
+      <img src="07-urban.png" alt="Urban & Graffiti">
+      <div class="cat-meta">
+        <span>07</span>
+        <div><strong>Urban & Graffiti</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Luxury & Premium" data-image="08-luxury.png">
+      <img src="08-luxury.png" alt="Luxury & Premium">
+      <div class="cat-meta">
+        <span>08</span>
+        <div><strong>Luxury & Premium</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    
+    <button class="category-card" data-title="Wild & Animal" data-image="09-animal.png">
+      <img src="09-animal.png" alt="Wild & Animal">
+      <div class="cat-meta">
+        <span>09</span>
+        <div><strong>Wild & Animal</strong><small>Antippen für alle 9 Models</small></div>
+      </div>
+    </button>
+    </div></main>
+
+<div class="modal" id="modal">
+  <div class="modal-shell">
+    <div class="modal-head"><h2 id="modalTitle"></h2><button class="close" id="closeBtn">×</button></div>
+    <div class="model-grid" id="modelGrid"></div>
+    <div class="choice" id="choice"></div>
+  </div>
+</div>
+
+<script>
+const models = [{"name": "Louis", "initial": "L"}, {"name": "Jayden", "initial": "J"}, {"name": "Noah", "initial": "N"}, {"name": "Lina", "initial": "L"}, {"name": "Mila", "initial": "M"}, {"name": "Leo", "initial": "L"}, {"name": "Tyler", "initial": "T"}, {"name": "Yassin", "initial": "Y"}, {"name": "Ami", "initial": "A"}];
+const boxes = [[0, 100, 512, 414], [512, 100, 1024, 414], [1024, 100, 1536, 414], [0, 414, 512, 706], [512, 414, 1024, 706], [1024, 414, 1536, 706], [0, 706, 512, 1024], [512, 706, 1024, 1024], [1024, 706, 1536, 1024]];
+const modal = document.getElementById('modal');
+const modelGrid = document.getElementById('modelGrid');
+const modalTitle = document.getElementById('modalTitle');
+const choice = document.getElementById('choice');
+
+function setCrop(el, img, box) {
+  const [x0,y0,x1,y1]=box;
+  const cellW=x1-x0, cellH=y1-y0;
+  const sw=1536, sh=1024;
+  const scaleX=sw/cellW*100;
+  const scaleY=sh/cellH*100;
+  const posX=-(x0/cellW)*100;
+  const posY=-(y0/cellH)*100;
+  el.style.backgroundImage=`url('${img}')`;
+  el.style.backgroundSize=`${scaleX}% ${scaleY}%`;
+  el.style.backgroundPosition=`${posX}% ${posY}%`;
+}
+
+document.querySelectorAll('.category-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const img=card.dataset.image, title=card.dataset.title;
+    modalTitle.textContent=title;
+    modelGrid.innerHTML='';
+    choice.classList.remove('show');
+    models.forEach((m,i)=>{
+      const btn=document.createElement('button');
+      btn.className='model-card';
+      btn.innerHTML=`<div class="crop"><div class="crop-inner"></div></div>
+      <div class="model-label"><strong>${m.name}</strong><span class="initial">${m.initial}</span></div>`;
+      setCrop(btn.querySelector('.crop-inner'), img, boxes[i]);
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.model-card').forEach(x=>x.classList.remove('selected'));
+        btn.classList.add('selected');
+        choice.innerHTML=`Ausgewählt: <strong>${m.name}</strong> · <strong>${title}</strong>`;
+        choice.classList.add('show');
+      });
+      modelGrid.appendChild(btn);
+    });
+    modal.classList.add('open');
+  });
+});
+
+function closeModal(){modal.classList.remove('open')}
+document.getElementById('closeBtn').onclick=closeModal;
+modal.addEventListener('click',e=>{if(e.target===modal) closeModal()});
+</script>
+</body></html>
