@@ -56,4 +56,21 @@ DESIGN:
   } catch (error) {
     console.error(error);
     const message = error?.status ===
-    
+    401
+  ? "OpenAI-API-Schlüssel ist ungültig oder nicht freigeschaltet."
+  : (error?.message || "Fehler bei der KI-Bildgenerierung.");
+
+return res
+  .status(error?.status && Number.isInteger(error.status) ? error.status : 500)
+  .json({ error: message });
+  }
+401
+  ? "OpenAI-API-Schlüssel ist ungültig oder nicht freigeschaltet."
+  : (error?.message || "Fehler bei der KI-Bildgenerierung.");
+
+return res
+  .status(error?.status && Number.isInteger(error.status) ? error.status : 500)
+  .json({ error: message });
+  }
+}
+
