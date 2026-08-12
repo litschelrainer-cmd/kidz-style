@@ -46,56 +46,73 @@ export default async function handler(req, res) {
       });
     }
 
-    const child = parseDataUrl(childImage);
+    const person = parseDataUrl(childImage);
     const reference = parseDataUrl(styleReference);
 
     const images = [
-      await toFile(
-        child.buffer,
-        "child.jpg",
-        { type: child.mime }
-      ),
-      await toFile(
-        reference.buffer,
-        "style-reference.jpg",
-        { type: reference.mime }
-      ),
+      await toFile(person.buffer, "person.jpg", {
+        type: person.mime,
+      }),
+      await toFile(reference.buffer, "design-reference.jpg", {
+        type: reference.mime,
+      }),
     ];
 
+    const initial = name.trim().charAt(0).toUpperCase();
+
     const prompt = `
-Create a polished, photorealistic commercial KIDZ STYLE T-shirt mockup.
+Create a premium photorealistic KIDZ STYLE product preview.
 
-The FIRST uploaded image is the identity reference of the child.
-The SECOND uploaded image is only the visual style and design reference.
+IMAGE 1:
+This is the customer/person.
+Preserve this person's identity as faithfully as possible.
 
-IMPORTANT IDENTITY RULES:
-- Preserve the child's recognizable face.
-- Preserve facial proportions, hairstyle, skin tone and apparent age.
-- Do not replace the child with the model from the reference image.
-- Keep the result natural and age-appropriate.
+IDENTITY IS CRITICAL:
+- Keep the same person from image 1.
+- Preserve facial features and facial proportions.
+- Preserve apparent age.
+- Preserve hairstyle and hair color.
+- Preserve skin tone.
+- Preserve gender presentation.
+- Preserve recognizable identity.
+- DO NOT make an adult younger.
+- DO NOT turn an adult into a child.
+- DO NOT replace the person with the person/model from image 2.
 
-DESIGN INFORMATION:
-Category: ${style}
-Reference model: ${model}
-T-shirt color: ${color}
-Name to print: ${name}
+IMAGE 2:
+This is ONLY the selected KIDZ STYLE design and visual reference.
 
-Use the second image as inspiration for:
-- graphic design language
-- composition
-- mood
-- background
-- lighting
-- accessories where appropriate
+T-SHIRT DESIGN:
+- Reproduce the T-shirt graphic from image 2 as closely as possible.
+- Keep the same composition, graphic elements, proportions, colors and placement.
+- Do NOT invent a new logo.
+- Do NOT redesign the selected graphic.
+- Replace ONLY the original main initial/letter with "${initial}".
+- The ONLY personalized text allowed in this design is the single letter "${initial}".
+- DO NOT write "${name}" anywhere.
+- DO NOT add a second name.
+- DO NOT add extra words or letters.
+- T-shirt color: ${color}.
 
-Put the exact name "${name}" clearly on the T-shirt.
+VISUAL STYLE:
+- Category: ${style}
+- Selected reference model: ${model}
+- Image 2 may guide pose, background, lighting and overall advertising mood.
+- It must NEVER determine the identity of the person.
+- Keep the result natural and photorealistic.
+- Make the T-shirt and print look physically real.
+- The print must follow the folds and perspective of the fabric.
+- Premium ecommerce advertising quality.
+- Portrait orientation.
+- No watermark.
+- No additional text outside the intended shirt graphic.
 
-The design must look realistically printed on the fabric,
-including folds, perspective and lighting.
-
-Create one premium portrait-oriented ecommerce/social-media image.
-No watermark.
-No unnecessary extra text.
+FINAL CHECK:
+1. Same recognizable person as image 1.
+2. Same apparent age as image 1.
+3. Design remains as close as possible to image 2.
+4. Only the initial "${initial}" appears in the personalized design.
+5. The written name "${name}" must NOT appear.
 `;
 
     const result = await openai.images.edit({
@@ -106,37 +123,36 @@ No unnecessary extra text.
       quality: "medium",
     });
 
-    const image = result.data?.[0]?.b64_json;
+    const generatedImage = result.data?.[0]?.b64_json;
 
-    if (!image) {
-      throw new Error(
-        "Die Bild-API hat kein Bild zurückgegeben."
-      );
+    if (!generatedImage) {
+      throw new Error("Die Bild-API hat kein Bild zurückgegeben.");
     }
 
     res.setHeader("Cache-Control", "no-store");
 
     return res.status(200).json({
-      image,
+      image: generatedImage,
     });
-
   } catch (error) {
-    console.error(error);
+    console.error("KIDZ STYLE generation error:", error);
+
+    const status =
+      Number.isInteger(error?.status) &&
+      error.status >= 400 &&
+      error.status < 600
+        ? error.status
+        : 500;
 
     const message =
       error?.status === 401
-        ? "OpenAI-API-Schlüssel ist ungültig oder nicht freigeschaltet."
-        : error?.message ||
-          "Fehler bei der KI-Bildgenerierung.";
+        ? "Der OpenAI-API-Schlüssel ist ungültig."
+        : error?.status === 429
+        ? "Das OpenAI-API-Guthaben oder Nutzungslimit ist erreicht."
+        : error?.message || "Fehler bei der KI-Bilderstellung.";
 
-    return res
-      .status(
-        error?.status && Number.isInteger(error.status)
-          ? error.status
-          : 500
-      )
-      .json({
-        error: message,
-      });
+    return res.status(status).json({
+      error: message,
+    });
   }
 }
